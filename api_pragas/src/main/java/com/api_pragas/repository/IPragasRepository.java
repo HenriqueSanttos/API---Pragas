@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.api_pragas.domain.Pragas;
 
-
 @Repository
 public interface IPragasRepository extends JpaRepository<Pragas, Long>{
 	
