@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<p> Pragas</p><br></br>
+		
+	</head>
+
+	<body>
+		<h3> Pragas da Lavoura! </h3>		
+		
+		<script type="text/javascript">
+			//espera a pagina carregar e chama a funcão constroiPagina
+			document.addEventListener("DOMContentLoaded", constroiPagina);
+
+			//função para inserir a lista na pagina
+			function constroiPagina(){
+
+				// cria o objeto de requisão da api
+				var xmlHttp = new XMLHttpRequest();
+				//passa o endereço da api
+    			xmlHttp.open( "GET", "http://localhost:1805/pragas", false); 
+   				xmlHttp.send( null );
+   				//salva os valores que a api enviou
+				var myArr = JSON.parse(xmlHttp.responseText);
+
+				//pegando a table e colocando na variável
+				var tabela = document.getElementById("tabela");
+			
+				//para cada praga dentro do array vou pecorrer a lista (lembra que praga.nome tem o nome e praga.id tem o id)
+				for(praga of myArr){
+
+					var linha = tabela.insertRow(-1);
+
+					var coluna1 = linha.insertCell(0);
+					var coluna2 = linha.insertCell(1);					
+					
+					coluna1.innerHTML = praga.id;
+					coluna2.innerHTML = praga.nome;
+				}
+
+			}
+
+		</script>
+		 
+		<table id="tabela" border="1"></table>
+
+	</body>
+
+
+</html>
