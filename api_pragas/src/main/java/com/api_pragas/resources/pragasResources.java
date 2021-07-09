@@ -46,7 +46,10 @@ public class pragasResources {
 	
 	@DeleteMapping(value = "/{id}")
 	public void excluirPragas(@PathVariable Long id) {
-		repository.deleteById(id);
+		
+	//if(	this.repository.getById(id.getId() >0){
+	//	repository.deleteById(id);
+	//};
 	}
 
 }
