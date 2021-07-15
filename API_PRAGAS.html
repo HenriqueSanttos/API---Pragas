@@ -1,0 +1,69 @@
+<html>
+	<head>
+		
+		
+	</head>
+
+	<body>
+		<h3>Culturas - Data - Valor </h3>		
+		
+		<script type="text/javascript">
+			//espera a pagina carregar e chama a funcão constroiPagina
+			document.addEventListener("DOMContentLoaded", constroiPagina);
+
+			//função para inserir a lista na pagina
+			function constroiPagina(){
+
+				// cria o objeto de requisão da api
+				var xmlHttp = new XMLHttpRequest();
+				//passa o endereço da api
+    			xmlHttp.open( "GET", "http://localhost:1805/verificacoes", false); 
+    			
+   				xmlHttp.send( null );
+   				//salva os valores que a api enviou
+				var myArr = JSON.parse(xmlHttp.responseText);
+
+				//pegando a table e colocando na variável
+				var tabela = document.getElementById("tabela");
+			
+				//para cada praga dentro do array vou pecorrer a lista (lembra que praga.nome tem o nome e praga.id tem o id)
+				for(verificacoes of myArr){
+
+					for (talhao of myArr){
+						for (safra of myArr){
+
+
+
+
+							var linha = tabela.insertRow(-1);
+							var coluna1 = linha.insertCell(0);
+							var coluna2 = linha.insertCell(1);
+							var coluna3 = linha.insertCell(2);
+							var coluna4 = linha.insertCell(3);
+							var coluna5 = linha.insertCell(4);
+
+							coluna1.innerHTML = verificacoes.id;
+							coluna2.innerHTML = verificacoes.geoLocalizacao;
+							coluna3.innerHTML = verificacoes.data_hora;
+							coluna4.innerHTML = talhao.id;
+							coluna5.innerHTML = safra.id;
+							break;
+							break;
+							break;
+						}	
+
+					}		
+				}		
+					
+					
+				}
+
+
+		</script>
+		 
+		<table id="tabela" border="1"></table>
+
+	</body>
+
+
+</html>
